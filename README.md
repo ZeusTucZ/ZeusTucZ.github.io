@@ -1,52 +1,22 @@
-# Portfolio site
+# Lorenzo Orrante · Portfolio
 
-A personal portfolio for projects, certifications and awards. It's a plain static site
-(HTML, CSS and JavaScript), so there's nothing to install and no build step.
+**Live site: [zeustucz.github.io](https://zeustucz.github.io)**
 
-## View it
+My personal portfolio: projects, experience, certifications and awards.
 
-Double-click `index.html` to open it in your browser.
+I'm a Computer Science student at Tecnológico de Monterrey. I build real-time systems, computer vision and local AI tools, from race-car telemetry to autonomous drones.
 
-## Add or change content
+## Featured projects
 
-All content lives in **`js/content.js`**. You don't need to touch the other files.
+- **[Vehicle Telemetry Dashboard](https://github.com/ZeusTucZ/Elyos-Telemetry)**: real-time race-car telemetry with under 50 ms latency. React, Express.js, PostgreSQL, Socket.io.
+- **[Lux: Local AI Meeting Assistant](https://github.com/ZeusTucZ/Guadalahacks-2026)**: meeting transcription, summaries and chat with a local LLM. Python, FastAPI, Ollama, Whisper, ChromaDB.
+- **[Smart Mirror](https://github.com/danihdz11/Smart-Mirror)**: facial recognition and voice control with on-device inference. 1st place, Expo Ingenierías.
 
-- **Profile**: name, headline, intro, email, links and About text.
-- **Projects**: copy one `{ ... }` block inside `projects: [ ... ]` and edit it.
-  Projects show in the order you list them.
-- **Certifications** and **Awards**: same idea. They're sorted by date automatically.
+## Built with
 
-Watch the commas: each `{ ... }` block in a list needs a comma after it, except the last one.
+Plain HTML, CSS and JavaScript, with no framework or build step. Hosted on GitHub Pages.
 
-### Adding images and certificate files
+## Contact
 
-1. Put the file in the right folder:
-   - Project screenshots: `assets/projects/`
-   - Certificate PDFs or images: `assets/certificates/`
-   - Your résumé: `assets/resume.pdf`
-2. Point to it from `content.js`, for example
-   `cover: "assets/projects/harbor-cover.png"` or
-   `file: "assets/certificates/aws-saa.pdf"`.
-
-A project without a `cover` gets a colored mockup thumbnail from its `colors` and `mock` fields.
-Screenshots look best at a 16:10 ratio (for example 1600 × 1000 px).
-
-Certificate images (PNG, JPG, WEBP) show inside the detail view. PDFs open in a new tab.
-
-## Publish it online (free)
-
-Any static host works. Two easy options:
-
-- **Netlify Drop**: go to https://app.netlify.com/drop and drag this whole folder onto the page.
-- **GitHub Pages**: push this folder to a GitHub repository, then turn on
-  *Settings → Pages → Deploy from branch*.
-
-## Files
-
-```
-index.html          page structure
-css/styles.css      design (colors, fonts, layout)
-js/content.js       YOUR CONTENT
-js/main.js          builds the page from content.js
-assets/             your images, certificates and résumé
-```
+- Email: lorenzo.orrante@icloud.com
+- LinkedIn: [Lorenzo Orrante](https://www.linkedin.com/in/lorenzo-orrante-rom%C3%A1n-75b146359/)
