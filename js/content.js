@@ -47,7 +47,7 @@ window.PORTFOLIO = {
       role: "Full-stack developer",
       summary: "A real-time telemetry and monitoring platform for a race car, with under 50 ms of latency.",
       tags: ["React", "Express.js", "PostgreSQL", "Socket.io"],
-      cover: "",
+      cover: "assets/projects/telemetry-dashboard.jpg",
       colors: ["#ff9a6b", "#c2477a"],
       mock: "chart",
       problem: "The team needed to watch the vehicle live during track testing and keep reliable data for analysis afterwards.",
@@ -59,6 +59,26 @@ window.PORTFOLIO = {
       ],
       images: [],
       links: [{ label: "Source code", url: "https://github.com/ZeusTucZ/Elyos-Telemetry" }]
+    },
+    {
+      title: "agent-eval",
+      year: "2026",
+      period: "Oct 2026",
+      role: "Solo project",
+      summary: "A reliability harness that tests LLM agents and measures correctness, tool use, latency, cost and retries.",
+      tags: ["Python", "SQLite", "Gemini", "Groq", "Ollama"],
+      cover: "",
+      colors: ["#e8c45c", "#c9733b"],
+      mock: "chart",
+      problem: "An agent can answer correctly in a demo and still be slow, expensive, flaky, or right for the wrong reason, such as answering from memory instead of using its tools. A single pass/fail number hides all of that.",
+      solution: "A harness that runs an agent over a dataset many times and traces every LLM and tool call. Scorers are kept separate from trials, so they can be fixed and re-run without calling the model again. It adds retries with backoff, client-side rate limiting and a circuit breaker for daily quotas, and it works with a mock agent, Gemini, and OpenAI-compatible providers such as Groq or a local Ollama.",
+      results: [
+        "48/48 correct on the standard dataset with Groq, choosing the right tool every time",
+        "A harder dataset scored 89.1% and showed prompt injection succeeding 2 of 4 times",
+        "Inspecting real runs exposed a bug in my own scorer and mislabelled failures, both fixed"
+      ],
+      images: [],
+      links: [{ label: "Source code", url: "https://github.com/ZeusTucZ/agent-eval" }]
     },
     {
       title: "Lux: Local AI Meeting Assistant",
@@ -77,6 +97,25 @@ window.PORTFOLIO = {
       ],
       images: [],
       links: [{ label: "Source code", url: "https://github.com/ZeusTucZ/Guadalahacks-2026" }]
+    },
+    {
+      title: "Autonomous Drone Navigation",
+      year: "2026",
+      period: "Sep 2026",
+      role: "",
+      summary: "A DJI Tello that uses its camera to find a 1×1 m gate, align with it and advance in controlled stages.",
+      tags: ["Python", "OpenCV", "djitellopy"],
+      cover: "",
+      colors: ["#6f9fd8", "#2b4a7d"],
+      mock: "text",
+      problem: "The drone has to align with a gate and fly toward it using only its onboard camera, with no trained model and no 3D trajectory estimate.",
+      solution: "A Python prototype that combines HSV color segmentation, geometric filters, a proportional controller and a state machine. It turns camera-frame error into movement commands during takeoff, traversal and landing, and a flight guard supervises the commands sent to the drone.",
+      results: [
+        "Runs on a live Tello, a webcam or a video file, so the vision logic can be tested without flying",
+        "Automated tests cover capture, takeoff and failure cases with simulated hardware"
+      ],
+      images: [],
+      links: [{ label: "Source code", url: "https://github.com/ZeusTucZ/reto-tello-gates" }]
     },
     {
       title: "Smart Mirror",
