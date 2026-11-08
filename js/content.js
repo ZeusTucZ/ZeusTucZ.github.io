@@ -19,14 +19,14 @@ window.PORTFOLIO = {
     headline: "Building software for",   // big hero text
     headlineAccent: "the real world.",   // highlighted last line (optional)
     intro: "I'm Lorenzo, a Computer Science student at Tecnológico de Monterrey. I build real-time systems, computer vision and local AI tools, from race-car telemetry to autonomous drones.",
-    subIntro: "Currently on the VantTec Autonomous Systems team. Expected graduation June 2028.",
+    subIntro: "Software Engineering Intern — Summer 2027. Available from January 2027 in Monterrey, Guadalajara & the USA. GPA 3.75/4.00. Currently on the VantTec Autonomous Systems team; expected graduation June 2028.",
     available: true,                    // true shows an "open to opportunities" dot
-    availableText: "Open to internships",
+    availableText: "Open to internships · Summer 2027",
     resume: "assets/resume.pdf",          // leave "" to hide the button
     email: "lorenzo.orrante@icloud.com",
     links: [
       { label: "GitHub", url: "https://github.com/ZeusTucZ" },
-      { label: "LinkedIn", url: "https://www.linkedin.com/in/lorenzo-orrante-rom%C3%A1n-75b146359/" }
+      { label: "LinkedIn", url: "https://www.linkedin.com/in/lorenzo-orrante/" }
     ],
     about: [
       "I'm studying for a B.S. in Computer Science and Technologies at Tecnológico de Monterrey, with a 3.75/4.00 GPA.",
@@ -51,7 +51,7 @@ window.PORTFOLIO = {
       colors: ["#ff9a6b", "#c2477a"],
       mock: "chart",
       problem: "The team needed to watch the vehicle live during track testing and keep reliable data for analysis afterwards.",
-      solution: "A real-time platform built with React, Express.js, PostgreSQL and WebSockets. Incoming telemetry is validated automatically and saved to the database, and a responsive React interface shows live metrics and historical data. The platform is deployed to the cloud.",
+      solution: "A real-time platform built with React, Express.js, PostgreSQL and WebSockets. Incoming telemetry is validated automatically and saved to the database, and a responsive React interface shows live metrics and historical data. The platform is deployed to the cloud. The repository now lives under the Elyos-Research organisation.",
       results: [
         "Under 50 ms communication latency across 100 validated data points",
         "Used for monitoring during track testing, helping spot abnormal or inconsistent system behavior",
@@ -122,7 +122,7 @@ window.PORTFOLIO = {
       year: "2025",
       period: "Oct – Dec 2025",
       role: "Developer",
-      summary: "A smart mirror with facial recognition and voice commands that keeps biometric data on the local network.",
+      summary: "A team project: a smart mirror with facial recognition and voice commands that keeps biometric data on the local network.",
       tags: ["Python", "JavaScript", "MongoDB"],
       cover: "",
       colors: ["#6fb7a8", "#2c5f73"],
@@ -178,8 +178,8 @@ window.PORTFOLIO = {
   skills: [
     { group: "Programming", items: ["Python", "C++", "JavaScript / TypeScript", "MATLAB"] },
     { group: "Software engineering", items: ["Object-oriented programming", "Data structures & algorithms", "REST APIs", "Full-stack development", "FastAPI", "Express.js", "React"] },
-    { group: "AI & computer vision", items: ["OpenCV", "Ollama", "ChromaDB", "Whisper"] },
-    { group: "Systems & infrastructure", items: ["Linux", "Cloud deployment", "WebSockets", "PostgreSQL", "MongoDB"] },
+    { group: "AI & computer vision", items: ["OpenCV", "Ollama", "ChromaDB", "Whisper", "ROS"] },
+    { group: "Systems & infrastructure", items: ["Linux", "Cloud deployment", "WebSockets", "PostgreSQL", "MongoDB", "SQL"] },
     { group: "Testing & validation", items: ["Debugging", "Automated validation", "API testing", "Git", "GitHub"] }
   ],
 
@@ -191,8 +191,8 @@ window.PORTFOLIO = {
     {
       title: "OCI Foundations Associate",
       issuer: "Oracle",
-      date: "",
-      expires: "",
+      date: "2026-01-04",
+      expires: "2028-01-04",
       credentialId: "",
       verifyUrl: "",
       file: "https://drive.google.com/file/d/108MJNYTEdnUXAzgJKHvCWzTOx-4BJ33V/view?usp=sharing",
@@ -201,12 +201,22 @@ window.PORTFOLIO = {
     {
       title: "OCI AI Foundations Associate",
       issuer: "Oracle",
-      date: "",
+      date: "2026-02",
       expires: "",
       credentialId: "",
       verifyUrl: "",
       file: "https://drive.google.com/file/d/1NszRxV8fscqQDoagyQuRi-gxA6I3L1x_/view?usp=sharing",
       badge: "AI"
+    },
+    {
+      title: "Google Professional AI Certificate",
+      issuer: "Google · Coursera",
+      date: "2026-07",
+      expires: "",
+      credentialId: "",
+      verifyUrl: "",
+      file: "",
+      badge: "GPAI"
     },
     {
       title: "Data Structures",
