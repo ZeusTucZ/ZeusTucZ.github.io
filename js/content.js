@@ -22,6 +22,13 @@ window.PORTFOLIO = {
     subIntro: "Currently on the VantTec Autonomous Systems team. Expected graduation June 2028.",
     available: true,                    // true shows an "open to opportunities" dot
     availableText: "Open to internships",
+    // Big numbers under the hero. `project` opens that project's details; `link` jumps to a section.
+    highlights: [
+      { value: "<50 ms", label: "latency on a live race-car telemetry platform", project: "Vehicle Telemetry Dashboard" },
+      { value: "11%", label: "energy-efficiency gain from my Shell Eco-marathon race strategy", link: "#experience" },
+      { value: "48/48", label: "agent trials correct on Groq, measured with agent-eval", project: "agent-eval" },
+      { value: "1st", label: "place at Expo Ingenierías against 12+ engineering teams", project: "Smart Mirror" }
+    ],
     resume: "assets/resume.pdf",          // leave "" to hide the button
     email: "lorenzo.orrante@icloud.com",
     links: [
@@ -68,8 +75,8 @@ window.PORTFOLIO = {
       summary: "A reliability harness that tests LLM agents and measures correctness, tool use, latency, cost and retries.",
       tags: ["Python", "SQLite", "Gemini", "Groq", "Ollama"],
       cover: "",
-      colors: ["#e8c45c", "#c9733b"],
-      mock: "chart",
+      colors: ["#3a3550", "#1d1a2b"],
+      mock: "terminal",
       problem: "An agent can answer correctly in a demo and still be slow, expensive, flaky, or right for the wrong reason, such as answering from memory instead of using its tools. A single pass/fail number hides all of that.",
       solution: "A harness that runs an agent over a dataset many times and traces every LLM and tool call. Scorers are kept separate from trials, so they can be fixed and re-run without calling the model again. It adds retries with backoff, client-side rate limiting and a circuit breaker for daily quotas, and it works with a mock agent, Gemini, and OpenAI-compatible providers such as Groq or a local Ollama.",
       results: [
@@ -88,8 +95,8 @@ window.PORTFOLIO = {
       summary: "Transcribes meetings and generates summaries, mind maps and chat answers with a local LLM.",
       tags: ["Python", "FastAPI", "Ollama", "Whisper", "ChromaDB", "React"],
       cover: "",
-      colors: ["#8b8cf0", "#4a3f8f"],
-      mock: "text",
+      colors: ["#9b8cf0", "#4a3f8f"],
+      mock: "transcript",
       problem: "Meeting assistants usually send recordings to the cloud. Lux runs entirely on a local model.",
       solution: "An end-to-end Python/FastAPI application that transcribes audio with Whisper and uses a local Ollama LLM for summaries, mind maps and chat. A RAG pipeline with ChromaDB retrieves only the relevant parts of the transcript. The React interface supports streaming responses, persistent chat history, timeline navigation and structured transcript access.",
       results: [
@@ -107,7 +114,7 @@ window.PORTFOLIO = {
       tags: ["Python", "OpenCV", "djitellopy"],
       cover: "",
       colors: ["#6f9fd8", "#2b4a7d"],
-      mock: "text",
+      mock: "drone",
       problem: "The drone has to align with a gate and fly toward it using only its onboard camera, with no trained model and no 3D trajectory estimate.",
       solution: "A Python prototype that combines HSV color segmentation, geometric filters, a proportional controller and a state machine. It turns camera-frame error into movement commands during takeoff, traversal and landing, and a flight guard supervises the commands sent to the drone.",
       results: [
@@ -125,8 +132,8 @@ window.PORTFOLIO = {
       summary: "A smart mirror with facial recognition and voice commands that keeps biometric data on the local network.",
       tags: ["Python", "JavaScript", "MongoDB"],
       cover: "",
-      colors: ["#6fb7a8", "#2c5f73"],
-      mock: "tiles",
+      colors: ["#6fb7a8", "#24525f"],
+      mock: "mirror",
       problem: "Facial recognition usually means sending biometric data to an outside server.",
       solution: "Facial recognition with on-device inference, designed around Privacy by Design so biometric data never leaves the local network. Voice commands make it hands-free.",
       results: [

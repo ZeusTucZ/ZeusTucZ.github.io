@@ -1,0 +1,119 @@
+/* ======================================================================
+   Motion & interaction layer for js/fx.js. Decorative: all of it is off
+   under prefers-reduced-motion, and the page reads the same without it.
+   ====================================================================== */
+main { position: relative; isolation: isolate; }
+main > section, main > .ticker-wrap { position: relative; z-index: 1; }
+
+/* Interactive dot field + soft glow behind the hero */
+.field { position: absolute; left: 0; top: 0; width: 100%; height: 640px; z-index: 0; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent); mask-image: linear-gradient(to bottom, #000 55%, transparent); }
+.hero-glow { position: absolute; inset: -120px 0 auto; height: 760px; z-index: -1; pointer-events: none; overflow: hidden; transition: transform 1.2s cubic-bezier(.2, .8, .2, 1); }
+.hero-glow i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; }
+.hero-glow i:first-child { width: 520px; height: 520px; left: 4%; top: 80px; background: color-mix(in srgb, var(--accent) 40%, transparent); animation: drift 18s ease-in-out infinite alternate; }
+.hero-glow i:last-child { width: 420px; height: 420px; right: 6%; top: 220px; background: color-mix(in srgb, #8b5cf6 35%, transparent); animation: drift 22s ease-in-out infinite alternate-reverse; }
+@keyframes drift { to { transform: translate(80px, 40px) scale(1.15); } }
+
+/* Headline: each word rises out of its own line; the accent line shimmers */
+.hero h1.split { animation: none; }
+.hero h1 .w, .hero h1 .wi { color: inherit; }
+.hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+.hero h1 .wi { display: inline-block; animation: word-up 1s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--i) * 70ms + 120ms); }
+@keyframes word-up { from { transform: translateY(108%) rotate(4deg); } }
+.hero h1 > span:not(.w) .wi {
+  background: linear-gradient(100deg, var(--accent) 20%, color-mix(in srgb, var(--accent) 45%, var(--fg)) 50%, var(--accent) 80%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: word-up 1s cubic-bezier(.16, 1, .3, 1) both, shimmer 5s linear 1.4s infinite;
+  animation-delay: calc(var(--i) * 70ms + 120ms), 1.4s;
+}
+@keyframes shimmer { from { background-position: 110% 0; } to { background-position: -110% 0; } }
+
+/* Project cards: 3D tilt, glare that follows the cursor, inner parallax */
+.case .thumb { transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px)); transition: transform .6s cubic-bezier(.2, .8, .2, 1), box-shadow .5s ease; }
+.case:hover .thumb, .case:focus-visible .thumb { --lift: -6px; transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift)); box-shadow: 0 28px 60px var(--shadow); }
+.case.tilting .thumb { transition: transform .12s linear, box-shadow .5s ease; }
+.thumb::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .3), transparent 45%); mix-blend-mode: soft-light; }
+.case:hover .thumb::after { opacity: 1; }
+.thumb .art, .thumb img, .case .thumb .screen { transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.case:hover .thumb .art, .case:hover .thumb img { transform: translate(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -10px)) scale(1.05); }
+.case:hover .thumb .screen { transform: translate(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -10px)); }
+.case h3 { transition: color .25s ease; }
+.case .meta h3::after { content: " →"; display: inline-block; opacity: 0; transform: translateX(-6px); transition: opacity .3s ease, transform .3s ease; color: var(--accent); }
+.case:hover .meta h3::after { opacity: 1; transform: none; }
+@media (hover: hover) {
+  .work:hover .case:not(:hover) { opacity: .55; filter: saturate(.75); }
+}
+
+/* Spotlight that follows the cursor on panels */
+.badge, .job, .edu-item { position: relative; }
+.badge::before, .job::before, .edu-item::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s ease;
+  background: radial-gradient(260px circle at var(--sx, 50%) var(--sy, 50%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%); }
+.badge:hover::before, .job:hover::before, .edu-item:hover::before { opacity: 1; }
+.badge > *, .edu-item > *, .job > * { position: relative; }
+.medal { transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+.badge:hover .medal { transform: rotate(-8deg) scale(1.06); }
+.badge:hover .medal.award { transform: rotate(37deg) scale(1.06); }
+.badge { transition: border-color .2s ease, transform .4s cubic-bezier(.2, .8, .2, 1); }
+.badge:hover { transform: translateY(-4px); }
+
+/* Magnetic buttons ease back when released; primary buttons get a sheen */
+.btn, .theme-toggle { transition: transform .35s cubic-bezier(.2, .8, .2, 1), border-color .2s ease, background-color .2s ease; }
+.magnet-on { transition: transform .08s linear, border-color .2s ease, background-color .2s ease; }
+.btn.primary { position: relative; overflow: hidden; }
+.btn.primary::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .35), transparent 70%); transform: translateX(-120%); transition: transform .7s ease; }
+.btn.primary:hover::after { transform: translateX(120%); }
+
+/* Section titles end with the brand dot */
+.sec-title h2::after, .about h2::after { content: "."; color: var(--accent); }
+
+/* Ticker: a tilted band of skills that scrolls forever */
+.ticker-wrap { overflow: hidden; padding-block: 44px 12px; margin-top: 16px; }
+.ticker { transform: rotate(-2deg); width: 104%; margin-left: -2%; background: var(--accent); color: var(--on-accent); padding-block: 14px; overflow: hidden; }
+.ticker .track { display: flex; width: max-content; gap: 28px; align-items: center; animation: marquee 40s linear infinite; }
+.ticker:hover .track { animation-play-state: paused; }
+.ticker span { font-family: var(--display); font-weight: 800; font-size: clamp(22px, 3vw, 36px); letter-spacing: -0.02em; white-space: nowrap; }
+.ticker span.o { color: transparent; -webkit-text-stroke: 1.5px var(--on-accent); }
+.ticker b { font-size: 18px; opacity: .7; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Scroll reveals: content is always visible, it only slides into place */
+.rv { transform: translateY(34px); transition: transform 1s cubic-bezier(.16, 1, .3, 1), opacity .4s ease, filter .4s ease, border-color .2s ease; transition-delay: var(--d, 0ms); }
+.rv.in { transform: none; }
+.badge.rv.in:hover { transform: translateY(-4px); transition-delay: 0ms; }
+
+/* Scroll progress line under the header */
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 40%, #8b5cf6)); transform-origin: 0 50%; transform: scaleX(0); }
+
+/* Dialog opens with a lift */
+dialog[open] { animation: pop .45s cubic-bezier(.16, 1, .3, 1); }
+dialog[open]::backdrop { animation: fade .35s ease; }
+@keyframes pop { from { transform: translateY(24px) scale(.97); opacity: 0; } }
+@keyframes fade { from { opacity: 0; } }
+
+/* Theme switch spreads out in a circle from the toggle */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { animation: theme-in .7s cubic-bezier(.65, 0, .35, 1); }
+@keyframes theme-in { from { clip-path: circle(0 at var(--tx, 50%) var(--ty, 0)); } to { clip-path: circle(150vmax at var(--tx, 50%) var(--ty, 0)); } }
+
+/* Film grain for depth */
+.grain { position: fixed; inset: 0; z-index: 55; pointer-events: none; opacity: .06; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+::selection { background: var(--accent); color: var(--on-accent); }
+
+@media (max-width: 860px) {
+  .hero-glow i:first-child { width: 320px; height: 320px; }
+  .hero-glow i:last-child { width: 260px; height: 260px; }
+  .ticker-wrap { padding-block: 30px 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow i, .ticker .track { animation: none !important; }
+  .rv { transform: none; transition: none; }
+  .case .thumb, .thumb .art, .thumb img, .btn, .badge, .medal { transition: none; }
+  dialog[open], dialog[open]::backdrop { animation: none; }
+  .ticker .track { flex-wrap: wrap; width: auto; justify-content: center; row-gap: 6px; }
+  .ticker .track > :nth-child(n + 41) { display: none; }
+}

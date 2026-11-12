@@ -3,12 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Portfolio</title>
-  <meta name="description" content="Projects, certifications and awards.">
+  <title>Lorenzo Orrante · Portfolio</title>
+  <meta name="description" content="Lorenzo Orrante, Computer Science student at Tecnológico de Monterrey. Real-time systems, computer vision and local AI: race-car telemetry, autonomous drones, LLM agent evaluation.">
+  <meta name="author" content="Lorenzo Orrante">
+  <meta name="theme-color" content="#1b1520">
+  <link rel="canonical" href="https://zeustucz.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- How the link looks when shared on LinkedIn, WhatsApp, Slack, etc. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zeustucz.github.io/">
+  <meta property="og:title" content="Lorenzo Orrante · Portfolio">
+  <meta property="og:description" content="Real-time systems, computer vision and local AI. Projects, experience, certifications and awards.">
+  <meta property="og:image" content="https://zeustucz.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lorenzo Orrante",
+    "url": "https://zeustucz.github.io/",
+    "jobTitle": "Computer Science student",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Tecnológico de Monterrey" },
+    "sameAs": ["https://github.com/ZeusTucZ", "https://www.linkedin.com/in/lorenzo-orrante-rom%C3%A1n-75b146359/"]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/fx.css">
   <script>
     // Apply the saved theme before the page paints, so there is no flash.
     try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
@@ -17,7 +45,8 @@
 <body>
   <a class="skip" href="#work">Skip to work</a>
 
-  <header class="top gutter">
+  <header class="site-head" id="site-head">
+   <div class="top gutter">
     <a class="mark" href="#top" id="mark"></a>
     <nav aria-label="Sections">
       <a href="#work">Work</a>
@@ -28,9 +57,13 @@
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
       </button>
     </nav>
+   </div>
+   <div class="progress" id="progress" aria-hidden="true"></div>
   </header>
 
   <main id="top">
+    <div class="hero-glow" aria-hidden="true"><i></i><i></i></div>
+    <canvas class="field" id="field" aria-hidden="true"></canvas>
     <section class="hero gutter">
       <h1 id="headline"></h1>
       <div class="side">
@@ -39,6 +72,12 @@
         <div class="btns" id="hero-buttons"></div>
       </div>
     </section>
+
+    <section class="highlights gutter" aria-label="Highlights">
+      <ul id="highlights"></ul>
+    </section>
+
+    <div class="ticker-wrap" aria-hidden="true"><div class="ticker" id="ticker"></div></div>
 
     <section class="section gutter" id="work" aria-labelledby="work-title">
       <div class="sec-title">
@@ -101,5 +140,6 @@
   <!-- Your content lives in js/content.js. Edit that file to add projects, certifications and awards. -->
   <script src="js/content.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/fx.js"></script>
 </body>
 </html>
